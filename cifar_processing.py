@@ -20,7 +20,7 @@ cifar100_dataset = datasets.CIFAR100(download_path, train=True, download=True, t
 
 # Create a directory to store grouped images
 # save_path = '/Users/zoexiao/Documents/GitHub/capstone_2023_part_a_CIFAR/cifar100_processed/'
-save_path = '/mnt/home/cchou/ceph/Data/cifar100_processed/'
+save_path = '/mnt/home/cchou/ceph/Data/cifar100_train_processed/'
 
 # Create subdirectories for each class
 for class_idx, class_name in enumerate(cifar100_dataset.classes):
