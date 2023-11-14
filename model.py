@@ -3,7 +3,6 @@ import time
 import torch
 import torch.nn as nn
 from torch.utils import data
-import torch.nn.functional as F
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
@@ -17,7 +16,8 @@ BATCH_SIZE = 256
 NUM_EPOCHS = 60
 LEARNING_RATE = 0.001
 
-CIFAR100_DIR = '/mnt/home/cchou/ceph/Data/'
+# CIFAR100_DIR = '/mnt/home/cchou/ceph/Data/'
+CIFAR100_DIR = '/mnt/home/cchou/ceph/Data/cifar100_train_processed'
 OUTPUT_DIR = '/mnt/home/cchou/ceph/Capstone/'
 CHECKPOINT_DIR = OUTPUT_DIR + '/CIFAR100_models'
 
@@ -38,8 +38,8 @@ transform_test = transforms.Compose([
     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
 ])
 
-
-trainset = datasets.CIFAR100(root=CIFAR100_DIR, train=True, download=True, transform=transform_train)
+trainset = datasets.ImageFolder(CIFAR100_DIR, transform_train)
+# trainset = datasets.CIFAR100(root=CIFAR100_DIR, train=True, download=True, transform=transform_train)
 testset = datasets.CIFAR100(root=CIFAR100_DIR, train=False, download=True, transform=transform_train)
 
 
@@ -92,7 +92,6 @@ trainloader = data.DataLoader(
 
 testloader = data.DataLoader(
         testset,
-        shuffle=True,
         num_workers=2,
         drop_last=True,
         batch_size=BATCH_SIZE)
