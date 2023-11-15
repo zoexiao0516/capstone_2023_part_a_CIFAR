@@ -1,0 +1,135 @@
+
+Currently Loaded Modules:
+  1) modules/2.2-20230808 (S)   2) slurm (S)   3) openblas/threaded-0.3.23 (S)   4) openmpi/4.0.7
+
+  Where:
+   S:  Module is Sticky, requires --force to unload or purge
+
+ 
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              64
+On-line CPU(s) list: 0-63
+Thread(s) per core:  1
+Core(s) per socket:  32
+Socket(s):           2
+NUMA node(s):        2
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               106
+Model name:          Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz
+Stepping:            6
+CPU MHz:             2600.000
+CPU max MHz:         3400.0000
+CPU min MHz:         800.0000
+BogoMIPS:            5200.00
+Virtualization:      VT-x
+L1d cache:           48K
+L1i cache:           32K
+L2 cache:            1280K
+L3 cache:            49152K
+NUMA node0 CPU(s):   0-31
+NUMA node1 CPU(s):   32-63
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect wbnoinvd dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid fsrm md_clear pconfig flush_l1d arch_capabilities
+Tue Nov 14 20:40:29 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.86.10              Driver Version: 535.86.10    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off | 00000000:CA:00.0 Off |                    0 |
+| N/A   24C    P0              48W / 225W |      4MiB / 40960MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+available: 2 nodes (0-1)
+node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+node 0 size: 515655 MB
+node 0 free: 481228 MB
+node 1 cpus: 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63
+node 1 size: 516089 MB
+node 1 free: 509404 MB
+node distances:
+node   0   1 
+  0:  10  20 
+  1:  20  10 
+Slurm nodes:              1
+Slurm ntasks:             1
+Slurm ntasks-per-node:    
+Slurm cpus-per-task:      16
+cuda
+Dataloader created
+Starting training...
+LEARNING_RATE: 0.005
+Optimizer created
+Epoch: 1, Train Accuracy: 11.81% Average train Loss: 4.730489902007274 Time per epoch 152.93103647232056
+Epoch: 2, Train Accuracy: 22.32% Average train Loss: 3.5199923160748603 Time per epoch 20.077441930770874
+Epoch: 3, Train Accuracy: 33.62% Average train Loss: 2.927860895792643 Time per epoch 48.152408599853516
+Epoch: 4, Train Accuracy: 40.10% Average train Loss: 2.502018561730018 Time per epoch 19.914798736572266
+Epoch: 5, Train Accuracy: 48.81% Average train Loss: 2.1554788577250945 Time per epoch 69.18213248252869
+Epoch: 6, Train Accuracy: 53.77% Average train Loss: 1.8989954049770648 Time per epoch 19.89848780632019
+Epoch: 7, Train Accuracy: 57.37% Average train Loss: 1.7269354600172777 Time per epoch 63.25123119354248
+Epoch: 8, Train Accuracy: 59.80% Average train Loss: 1.587028179413233 Time per epoch 18.85472822189331
+Epoch: 9, Train Accuracy: 62.90% Average train Loss: 1.4650442202885945 Time per epoch 34.2989068031311
+Epoch: 10, Train Accuracy: 64.64% Average train Loss: 1.3743995525898078 Time per epoch 19.31758165359497
+Epoch: 11, Train Accuracy: 66.57% Average train Loss: 1.2856024699333386 Time per epoch 18.598448038101196
+Epoch: 12, Train Accuracy: 68.19% Average train Loss: 1.2050678580235212 Time per epoch 27.38178324699402
+Epoch: 13, Train Accuracy: 70.95% Average train Loss: 1.1328875028170071 Time per epoch 19.33480429649353
+Epoch: 14, Train Accuracy: 72.48% Average train Loss: 1.0626198606613355 Time per epoch 62.11195516586304
+Epoch: 15, Train Accuracy: 73.66% Average train Loss: 0.9987159242996803 Time per epoch 19.153785467147827
+Epoch: 16, Train Accuracy: 74.94% Average train Loss: 0.9482142090797424 Time per epoch 63.01506304740906
+Epoch: 17, Train Accuracy: 76.34% Average train Loss: 0.8892798613279294 Time per epoch 18.549686431884766
+Epoch: 18, Train Accuracy: 77.41% Average train Loss: 0.843891337284675 Time per epoch 22.858586311340332
+Epoch: 19, Train Accuracy: 79.22% Average train Loss: 0.7920976635737297 Time per epoch 18.855514526367188
+Epoch: 20, Train Accuracy: 79.55% Average train Loss: 0.7528240934396402 Time per epoch 18.649019956588745
+Epoch: 21, Train Accuracy: 80.21% Average train Loss: 0.717145496301162 Time per epoch 24.310108184814453
+Epoch: 22, Train Accuracy: 82.31% Average train Loss: 0.6836622773072658 Time per epoch 19.50991463661194
+Epoch: 23, Train Accuracy: 83.26% Average train Loss: 0.6417693828925108 Time per epoch 57.65030598640442
+Epoch: 24, Train Accuracy: 83.18% Average train Loss: 0.6129156190615433 Time per epoch 18.799185752868652
+Epoch: 25, Train Accuracy: 84.47% Average train Loss: 0.5721571634977292 Time per epoch 43.82257032394409
+Epoch: 26, Train Accuracy: 85.02% Average train Loss: 0.5487563681908143 Time per epoch 19.430811643600464
+Epoch: 27, Train Accuracy: 85.65% Average train Loss: 0.5218819540280563 Time per epoch 19.232560396194458
+Epoch: 28, Train Accuracy: 86.47% Average train Loss: 0.4947904441601191 Time per epoch 19.71784019470215
+Epoch: 29, Train Accuracy: 87.73% Average train Loss: 0.46729762920966517 Time per epoch 19.609010934829712
+Epoch: 30, Train Accuracy: 87.30% Average train Loss: 0.44187391828268 Time per epoch 40.59582161903381
+Epoch: 31, Train Accuracy: 87.79% Average train Loss: 0.42936072059166736 Time per epoch 19.306124687194824
+Epoch: 32, Train Accuracy: 88.37% Average train Loss: 0.4213819730740327 Time per epoch 33.35845160484314
+Epoch: 33, Train Accuracy: 88.94% Average train Loss: 0.3861587243966567 Time per epoch 19.80407404899597
+Epoch: 34, Train Accuracy: 89.30% Average train Loss: 0.39242056997922753 Time per epoch 18.88153910636902
+Epoch: 35, Train Accuracy: 89.95% Average train Loss: 0.3675401287201123 Time per epoch 26.34751582145691
+Epoch: 36, Train Accuracy: 90.19% Average train Loss: 0.36405759721230235 Time per epoch 19.113572597503662
+Epoch: 37, Train Accuracy: 91.04% Average train Loss: 0.3374381952560865 Time per epoch 36.10322165489197
+Epoch: 38, Train Accuracy: 90.61% Average train Loss: 0.3375810010310931 Time per epoch 18.577734231948853
+Epoch: 39, Train Accuracy: 91.29% Average train Loss: 0.30862988424606813 Time per epoch 19.31962013244629
+Epoch: 40, Train Accuracy: 91.17% Average train Loss: 0.30843030306009145 Time per epoch 25.784379720687866
+Epoch: 41, Train Accuracy: 91.10% Average train Loss: 0.30476893163644353 Time per epoch 18.732234954833984
+Epoch: 42, Train Accuracy: 91.37% Average train Loss: 0.28489074653539903 Time per epoch 22.943771839141846
+Epoch: 43, Train Accuracy: 92.13% Average train Loss: 0.27673446390873346 Time per epoch 20.14385199546814
+Epoch: 44, Train Accuracy: 91.71% Average train Loss: 0.2784618017765192 Time per epoch 19.560837984085083
+Epoch: 45, Train Accuracy: 91.97% Average train Loss: 0.27987139033965575 Time per epoch 38.13464331626892
+Epoch: 46, Train Accuracy: 92.99% Average train Loss: 0.2542549515381837 Time per epoch 19.081199884414673
+Epoch: 47, Train Accuracy: 93.02% Average train Loss: 0.2562383228387588 Time per epoch 19.36992383003235
+Epoch: 48, Train Accuracy: 92.30% Average train Loss: 0.25745348387803785 Time per epoch 19.403975248336792
+Epoch: 49, Train Accuracy: 93.32% Average train Loss: 0.23998027944411987 Time per epoch 18.560084104537964
+Epoch: 50, Train Accuracy: 92.56% Average train Loss: 0.2365010768939287 Time per epoch 38.30192852020264
+Epoch: 51, Train Accuracy: 93.39% Average train Loss: 0.23905276835728914 Time per epoch 19.619851112365723
+Epoch: 52, Train Accuracy: 93.80% Average train Loss: 0.21783783496954504 Time per epoch 18.445780992507935
+Epoch: 53, Train Accuracy: 93.80% Average train Loss: 0.2282681541947218 Time per epoch 20.34830379486084
+Epoch: 54, Train Accuracy: 93.48% Average train Loss: 0.2272959162409489 Time per epoch 19.2778263092041
+Epoch: 55, Train Accuracy: 93.43% Average train Loss: 0.20752153255236455 Time per epoch 28.127851009368896
+Epoch: 56, Train Accuracy: 93.64% Average train Loss: 0.20640853058833342 Time per epoch 18.912752389907837
+Epoch: 57, Train Accuracy: 94.05% Average train Loss: 0.20717110763757657 Time per epoch 19.752543210983276
+Epoch: 58, Train Accuracy: 94.52% Average train Loss: 0.2107227515715819 Time per epoch 37.5165593624115
+Epoch: 59, Train Accuracy: 94.43% Average train Loss: 0.1947044992294067 Time per epoch 18.43650531768799
+Epoch: 60, Train Accuracy: 93.95% Average train Loss: 0.20041212187363552 Time per epoch 18.93646264076233

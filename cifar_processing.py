@@ -3,8 +3,8 @@ import torch
 from torchvision import datasets, transforms
 
 # Set the directory where you want to save the CIFAR-100 dataset
-download_path = '/Users/shreemayi/Desktop/MSDS/CapStone/capstone_2023_part_a_CIFAR/data'
-# download_path = '/mnt/home/cchou/ceph/Data/'
+# download_path = '/Users/shreemayi/Desktop/MSDS/CapStone/capstone_2023_part_a_CIFAR/data'
+download_path = '/mnt/home/cchou/ceph/Data/'
 
 # Create a directory to save the dataset
 os.makedirs(download_path, exist_ok=True)

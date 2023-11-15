@@ -8,14 +8,19 @@ import sys
 from torch.utils import data
 
 torch.cuda.empty_cache()
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# print(device)
-# CIFAR100_DIR = '/Users/shreemayi/Desktop/MSDS/CapStone/capstone_2023_part_a_CIFAR/data/cifar100_processed/'
+
+is_parallel = True
+if is_parallel:
+    LEARNING_RATE = float(sys.argv[1])
+else:
+    LEARNING_RATE = 0.005
+
+# LEARNING_RATE = 0.01, 0.005, 0.0005
 CIFAR100_DIR = '/mnt/home/cchou/ceph/Data/cifar100_train_processed'
-MODELS_PATH = '/mnt/home/cchou/ceph/Capstone/CIFAR100_models/'
-OUT_DIR = '/Users/shreemayi/Desktop/MSDS/CapStone/capstone_2023_part_a_CIFAR/data/cifar_dataframes/'
+MODELS_PATH = f'/mnt/home/cchou/ceph/Capstone/CIFAR100_models/LR_{LEARNING_RATE}/'
+
 # Ensure the save_path exists
-os.makedirs(OUT_DIR, exist_ok=True)
+# os.makedirs(OUT_DIR, exist_ok=True)
 
 transform = transforms.Compose([
     transforms.ToTensor(),
@@ -67,7 +72,7 @@ transform_train = transforms.Compose([
     transforms.ToTensor()
 ])
 
-epoch = 60
+epoch = 59 #chose this as this model got highest train accuracy
 
 
 trainset = datasets.ImageFolder(CIFAR100_DIR, transform_train)
@@ -91,7 +96,5 @@ for images, target in dataloader:
     values, indices = torch.sort(logits[:, idx], dim=0, descending=True)
     top_50_map[idx] = indices[:50].tolist()
 
-with open("top_50.json", "w") as outfile:
+with open(f"top_50_lr{LEARNING_RATE}.json", "w") as outfile:
     json.dump(top_50_map, outfile)
-
-

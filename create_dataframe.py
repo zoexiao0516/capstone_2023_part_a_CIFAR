@@ -2,20 +2,24 @@ import torch
 import torch.nn as nn
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
+from torch.utils import data
 import numpy as np
 import pandas as pd
 import os
 import sys
-from torch.utils import data
+import json
+
 
 torch.cuda.empty_cache()
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # print(device)
 
-
+LEARNING_RATE = 0.001 #0.01, 0.005, 0.0005
 CIFAR100_DIR = '/mnt/home/cchou/ceph/Data/cifar100_train_processed'
-MODELS_PATH = '/mnt/home/cchou/ceph/Capstone/CIFAR100_models/'
-OUT_DIR = '/mnt/home/cchou/ceph/Capstone/CIFAR100_Dataframes/'
+#change models path and DFs path for other LRs
+MODELS_PATH = f'/mnt/home/cchou/ceph/Capstone/CIFAR100_models/LR_{LEARNING_RATE}/'  # Specify which LR
+OUT_DIR = f'/mnt/home/cchou/ceph/Capstone/CIFAR100_Dataframes_new/LR_{LEARNING_RATE}/'  # Specify which LR
+
 # Ensure the save_path exists
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -71,11 +75,8 @@ rows = []
 
 
 transform_train = transforms.Compose([
-    # transforms.RandomCrop(32, padding=4),
     transforms.Resize(IMAGE_DIM),
-    # transforms.RandomHorizontalFlip(),
     transforms.ToTensor()
-    # transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
 ])
 
 trainset = datasets.ImageFolder(CIFAR100_DIR, transform_train)
@@ -98,6 +99,7 @@ with torch.no_grad():
         clipped_model = nn.Sequential(*layers_list[:layer])
         X_projected = []     
         M_tag = None
+        
         for images, target in dataloader:
             # print(images.shape, target) 
             output = clipped_model(images)  # clip the layers for the class images

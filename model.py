@@ -40,7 +40,7 @@ transform_test = transforms.Compose([
 
 trainset = datasets.ImageFolder(CIFAR100_DIR, transform_train)
 # trainset = datasets.CIFAR100(root=CIFAR100_DIR, train=True, download=True, transform=transform_train)
-testset = datasets.CIFAR100(root=CIFAR100_DIR, train=False, download=True, transform=transform_train)
+# testset = datasets.CIFAR100(root=CIFAR100_DIR, train=False, download=True, transform=transform_train)
 
 
 def conv_block(in_channels, out_channels, pool=False):
@@ -90,11 +90,11 @@ trainloader = data.DataLoader(
         drop_last=True,
         batch_size=BATCH_SIZE)
 
-testloader = data.DataLoader(
-        testset,
-        num_workers=2,
-        drop_last=True,
-        batch_size=BATCH_SIZE)
+# testloader = data.DataLoader(
+#         testset,
+#         num_workers=2,
+#         drop_last=True,
+#         batch_size=BATCH_SIZE)
 
 print('Dataloader created')
 
@@ -132,7 +132,7 @@ for epoch in range(NUM_EPOCHS):
     correct = 0
     total = 0
     with torch.no_grad():
-        for data in testloader:
+        for data in trainloader:
             images, labels = data
             images, labels = images.to(device), labels.to(device)
             outputs = model(images)
@@ -141,5 +141,5 @@ for epoch in range(NUM_EPOCHS):
             correct += (predicted == labels).sum().item()
 
     val_acc = 100 * correct / total
-    print(f"Epoch: {epoch + 1}, Validation Accuracy: {val_acc:.2f}%", "Average train Loss:", total_loss/len(trainloader), "Time per epoch", end_time-start_time)
+    print(f"Epoch: {epoch + 1}, Train Accuracy: {val_acc:.2f}%", "Average train Loss:", total_loss/len(trainloader), "Time per epoch", end_time-start_time)
 
