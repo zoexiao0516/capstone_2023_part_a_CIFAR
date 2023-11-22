@@ -108,8 +108,10 @@ print('Optimizer created')
 criterion = nn.CrossEntropyLoss()
 
 # Lists to store training and test errors
-train_errors = []
-test_errors = []
+train_loss = []
+train_accuracy = []
+test_loss = []
+test_accuracy = []
 
 
 print('Starting training...')
@@ -129,7 +131,8 @@ for epoch in range(NUM_EPOCHS):
         optimizer.step()
 
         total_loss += loss.item()
-   
+
+    train_loss.append(total_loss/len(trainloader)) #
 
     # save checkpoints
     checkpoint_path = os.path.join(CHECKPOINT_DIR, 'model_states_e{}.pkl'.format(epoch + 1))
@@ -149,38 +152,38 @@ for epoch in range(NUM_EPOCHS):
             correct_train += (predicted == labels).sum().item()
 
     train_acc = 100 * correct_train / total_train
-    train_errors.append(100 - train_acc)
+    train_accuracy.append(train_acc) #
     
     # Calculate test error
     model.eval()
     correct_test = 0
     total_test = 0
     with torch.no_grad():
+        total_loss = 0
         for data in testloader:
             images, labels = data
             images, labels = images.to(device), labels.to(device)
             outputs = model(images)
+            loss = criterion(output, labels)
+            total_loss += loss.item()
+
             _, predicted = torch.max(outputs.data, 1)
             total_test += labels.size(0)
             correct_test += (predicted == labels).sum().item()
 
     test_acc = 100 * correct_test / total_test
-    test_errors.append(100 - test_acc)
+    test_loss.append(total_loss/len(testloader)) #
+    test_accuracy.append(test_acc) #
     
     end_time = time.time()
-    
-    results = {
-        'train_errors': train_errors,
-        'test_errors': test_errors
-    }
-    
-    with open(OUTPUT_DIR+'train_test_errors.json', 'w') as json_file:
-        json.dump[(results, json_file)
-    print("Results saved in json")
-    
-        
-    print(f"Epoch: {epoch + 1}, Train Accuracy: {train_acc:.2f}%, Test Accuracy: {test_acc:.2f}%", "Average train Loss:", total_loss/len(trainloader), "Time per epoch", end_time-start_time)
+    print(f"Epoch: {epoch + 1}, Train Accuracy: {train_acc:.2f}%, Test Accuracy: {test_acc:.2f}%",
+          "Time per epoch", end_time-start_time)
 
-# Print the final errors
-print("Train Errors:", train_errors)
-print("Test Errors:", test_errors)
+results = {"train_loss": train_loss,
+                   "train_accuracy": train_accuracy,
+                   "test_loss": test_loss,
+                   "test_accuracy": test_accuracy}
+
+with open(OUTPUT_DIR + 'train_test_errors.json', 'w') as json_file:
+    json.dump(results, json_file)
+print("Results saved in json")
