@@ -28,6 +28,6 @@ echo "Slurm ntasks-per-node:    ${SLURM_NTASKS_PER_NODE}"
 echo "Slurm cpus-per-task:      ${SLURM_CPUS_PER_TASK}"
 
 # Arguments: dataset file, out directory, params file
-python create_dataframe.py $1
+python create_json.py $1
 
 
