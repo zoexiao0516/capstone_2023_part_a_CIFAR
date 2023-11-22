@@ -164,7 +164,7 @@ for epoch in range(NUM_EPOCHS):
             images, labels = data
             images, labels = images.to(device), labels.to(device)
             outputs = model(images)
-            loss = criterion(output, labels)
+            loss = criterion(outputs, labels)
             total_loss += loss.item()
 
             _, predicted = torch.max(outputs.data, 1)
